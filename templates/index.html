@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="ar">
+<head>
+    <meta charset="UTF-8">
+    <title>موقع ألعاب بدر</title>
+    <link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+    <div class="background"></div>
+    <h1>🎮 أفضل ألعاب الفيديو حسب التصنيف</h1>
+
+    {% for category, items in games.items() %}
+        <h2>{{ category }}</h2>
+        <div class="grid">
+            {% for game in items %}
+                <div class="card">
+                    <img src="{{ game.image }}" alt="{{ game.title }}">
+                    <h3>{{ game.title }}</h3>
+                    <p>{{ game.description }}</p>
+                    {% if game.download %}
+                        <a href="{{ game.download }}" target="_blank">تحميل اللعبة</a>
+                    {% endif %}
+                    {% if game.video %}
+                        <a href="{{ game.video }}" target="_blank">مشاهدة الفيديو</a>
+                    {% endif %}
+                </div>
+            {% endfor %}
+        </div>
+    {% endfor %}
+</body>
+</html>
